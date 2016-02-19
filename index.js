@@ -236,6 +236,11 @@ function logger(options) {
               if (filteredBody) meta.req.body = filteredBody;
 
               meta.responseTime = res.responseTime;
+              
+              // Check if meta is an object and extend meta with custom fields
+              if (typeof options.meta === "object") {
+                  _.extend(meta, options.meta);
+              }
             }
 
             if(options.expressFormat) {
